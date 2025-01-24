@@ -2835,12 +2835,18 @@ public class TestHandler {
             int address1 = memorySpace.malloc(20);
             int address2 = memorySpace.malloc(20);
             int address3 = memorySpace.malloc(55);
+            System.out.println("memorySpace.toString()\n"+memorySpace.toString());
+            System.out.println("expected1\n"+expected1);
             actualB = (actualB && address == 0 && address1 == 5 && address2 == 25 && address3 == 45 && memorySpace.toString().equals(expected1));
             memorySpace.free(address);
             memorySpace.free(address1);
             memorySpace.free(address2);
+            System.out.println("memorySpace.toString()\n"+memorySpace.toString());
+            System.out.println("expected2\n"+expected2);
             actualB = (actualB && memorySpace.toString().equals(expected2));
             memorySpace.defrag();
+            System.out.println("memorySpace.toString()\n"+memorySpace.toString());
+            System.out.println("expected3\n"+expected3);
             actual += (actualB && memorySpace.toString().equals(expected3));
         } catch (Exception e) {
             actual = TesterMessagesEnum.ERROR + e.getMessage();
